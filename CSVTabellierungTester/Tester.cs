@@ -118,6 +118,8 @@ namespace CSVTabellierungTester
             source.Add("Name;Strasse;Ort;Alter");                       //4 , 7, 3,5
             source.Add("Peter Pan;Am Hang 5;12345 Einsam;42");          //9 , 9,12,2
             source.Add("Maria Schmitz;Kölner Straße 45;50123 Köln;43"); //13,16,10,2
+            source.Add("Markus Bittner;Hindenburgstrasse 3;79183 Waldkirch;35"); //13,16,10,2
+            source.Add("Anastasia Bittner;Vogesenstrasse 5;xxxxx Weisweil;31"); //13,16,10,2
 
             var service = new EnumerableTabellierung.EnumerableTabellierung();
 

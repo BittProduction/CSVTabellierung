@@ -114,6 +114,11 @@ namespace EnumerableTabellierung
         {
             if (string.IsNullOrEmpty(FilePath)) return;
 
+            if(File.Exists(FilePath))
+            {
+                FilePath = String.Concat(Path.GetDirectoryName(FilePath),$"\\{Path.GetFileNameWithoutExtension(FilePath)}", $"_{DateTime.Now.ToString().Replace("_", "").Replace(":", "_")}.txt");
+            }
+
             var StringResult = Convert(Data);
 
             File.AppendAllText(FilePath,String.Join("\n",StringResult));
