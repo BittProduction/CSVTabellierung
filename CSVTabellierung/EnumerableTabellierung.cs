@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace EnumerableTabellierung
@@ -107,6 +108,16 @@ namespace EnumerableTabellierung
             }
 
             return result;
+        }
+
+        public void ConvertToFile(string FilePath,IEnumerable<string> Data)
+        {
+            if (string.IsNullOrEmpty(FilePath)) return;
+
+            var StringResult = Convert(Data);
+
+            File.AppendAllText(FilePath,String.Join("\n",StringResult));
+
         }
     }
 }

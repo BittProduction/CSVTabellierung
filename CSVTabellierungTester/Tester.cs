@@ -3,6 +3,8 @@ using Xunit;
 using EnumerableTabellierung;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.IO;
 
 namespace CSVTabellierungTester
 {
@@ -107,6 +109,24 @@ namespace CSVTabellierungTester
             var result = service.Convert(source);
 
             Assert.True(Enumerable.SequenceEqual(expected, result));
+        }
+
+        [Fact]
+        public void TestFileOutput()
+        {
+            List<string> source = new List<string>();
+            source.Add("Name;Strasse;Ort;Alter");                       //4 , 7, 3,5
+            source.Add("Peter Pan;Am Hang 5;12345 Einsam;42");          //9 , 9,12,2
+            source.Add("Maria Schmitz;Kölner Straße 45;50123 Köln;43"); //13,16,10,2
+
+            var service = new EnumerableTabellierung.EnumerableTabellierung();
+
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string path = Uri.UnescapeDataString(uri.Path);
+            string DirectoryPath = Path.GetDirectoryName(path);
+            string FilePath = Path.Combine(DirectoryPath, "MyTestFile.txt");
+            service.ConvertToFile(FilePath, source);
         }
     }
 }
