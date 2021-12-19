@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>csvToTableConverter</PackageId>
+    <Authors>Bittner Markus</Authors>
+    <Company>BitProduction</Company>
+    <Product>csvToTableConverter</Product>
+    <Description>Converts a string with seperator into a formatted table</Description>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
   </PropertyGroup>
 
 </Project>

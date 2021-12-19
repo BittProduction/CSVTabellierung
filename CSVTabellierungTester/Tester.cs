@@ -130,5 +130,24 @@ namespace CSVTabellierungTester
             string FilePath = Path.Combine(DirectoryPath, "MyTestFile.txt");
             service.ConvertToFile(FilePath, source);
         }
+
+
+        [Fact]
+        public void TestPrintTable()
+        {
+            var test = new EnumerableTabellierung.EnumerableTabellierung();
+
+            test.SetHeadline("Name;Strasse;Ort;Alter");
+            test.Add("Peter Pan;Am Hang 5;12345 Einsam;42");          //9 , 9,12,2
+            test.Add("Maria Schmitz;Kölner Straße 45;50123 Köln;43"); //13,16,10,2
+            test.Add("Markus Bittner;Hindenburgstrasse 3;79183 Waldkirch;35"); //13,16,10,2
+            test.Add("Anastasia Bittner;Vogesenstrasse 5;xxxxx Weisweil;31"); //13,16,10,2
+
+            test.PrintTable();
+
+            test.Add("Jonas Bittner; Vogesenstrasse 5; xxxxx Weisweil; 2,5");
+
+            test.PrintTable();
+        }
     }
 }

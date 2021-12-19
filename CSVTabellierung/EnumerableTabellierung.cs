@@ -10,10 +10,50 @@ namespace EnumerableTabellierung
         private Char CSVSeperator { get; set; }
         private bool IsFirstLineHeadline { get; set; }
 
+        private List<string> Data { get; set; } = new List<string>();
+        private string Headline { get; set; } = string.Empty;
+
         public EnumerableTabellierung(Char Seperator = ';', bool IsFirstLineHeadline = true)
         {
             this.CSVSeperator = Seperator;
             this.IsFirstLineHeadline = IsFirstLineHeadline;
+        }
+
+        public void SetHeadline(string Headline)
+        {
+            if (string.IsNullOrEmpty(Headline) || string.IsNullOrWhiteSpace(Headline))
+                throw new ArgumentException("List can not be empty");
+
+            if(Data.Count > 0)
+            {
+                Data.RemoveAt(0);
+            }
+            this.Headline = Headline;
+            Data.Insert(0, this.Headline);
+        }
+
+        public void Add(string data) => Data.Add(data);
+
+        public void PrintTable()
+        {
+            if(Data.Count > 1)
+            {
+                System.Diagnostics.Debug.WriteLine($"" +
+                    $"----------------" +
+                    $"\n{DateTime.Now}\n" +
+                    $"\n" +
+                    $"{string.Join("\n",Convert(Data))}" +
+                    $"\n\n" +
+                    $"----------------");
+            }
+
+            ResetContent();
+        }
+
+        public void ResetContent()
+        {
+            Data.Clear();
+            SetHeadline(this.Headline);
         }
 
         public IEnumerable<IEnumerable<string>> Split(List<string> lists)
@@ -89,7 +129,7 @@ namespace EnumerableTabellierung
                 string output = string.Empty;
                 for (int column = 0; column < splitted.ElementAt(row).Count(); column++)
                 {
-                    output = String.Join("|", output, splitted.ElementAt(row).ElementAt(column).PadRight(MaxColumLengths.ElementAt(column)));
+                    output = String.Join("|", output, splitted.ElementAt(row).ElementAt(column).Trim().PadRight(MaxColumLengths.ElementAt(column)));
                 }
                 result.Add(output);
                 if (row == 0)
