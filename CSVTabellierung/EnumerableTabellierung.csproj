@@ -3,14 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>csvToTableConverter</PackageId>
+    <PackageId>Bitpro.TableConverter</PackageId>
     <Authors>Bittner Markus</Authors>
     <Company>BitProduction</Company>
-    <Product>csvToTableConverter</Product>
+    <Product>Bitpro.TableConverter</Product>
     <Description>Converts a string with seperator into a formatted table</Description>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.2.1</Version>
+    <AssemblyVersion>1.0.2.1</AssemblyVersion>
+    <FileVersion>1.0.2.1</FileVersion>
+    <PackageProjectUrl>https://github.com/sepH2807/CSVTabellierung</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sepH2807/CSVTabellierung</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath=""/>
+	</ItemGroup>
 
 </Project>

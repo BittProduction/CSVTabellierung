@@ -38,7 +38,7 @@ namespace EnumerableTabellierung
         {
             if(Data.Count > 1)
             {
-                System.Diagnostics.Debug.WriteLine($"" +
+                Console.WriteLine($"" +
                     $"----------------" +
                     $"\n{DateTime.Now}\n" +
                     $"\n" +
