@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using EnumerableTabellierung;
+using CSVTable;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,7 +13,7 @@ namespace CSVTabellierungTester
         [Fact]
         public void TestSplitting()
         {
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             var result = service.Split(new List<string>() { "Name;Strasse;Ort;Alter" }).ToList();
 
@@ -27,7 +27,7 @@ namespace CSVTabellierungTester
             List<List<string>> expected = new List<List<string>>();
             expected.Add(new List<string>() { "Name", "Strasse", "Ort", "Alter" });
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             var result = service.Split(new List<string>() { "Name;Strasse;Ort;Alter" }).ToList();
 
@@ -40,7 +40,7 @@ namespace CSVTabellierungTester
             List<List<int>> expected = new List<List<int>>();
             expected.Add(new List<int> (){ 4, 7, 3, 5 });
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             var splitted = service.Split(new List<string>() { "Name;Strasse;Ort;Alter" }).ToList();
 
@@ -59,7 +59,7 @@ namespace CSVTabellierungTester
 
             List<int> expected = new List<int>() {13,16, 12,5};
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             var splitted = service.Split(source.ToList());
 
@@ -84,7 +84,7 @@ namespace CSVTabellierungTester
             expected.Add("|Peter Pan    |Am Hang 5       |12345 Einsam|42   ");
             expected.Add("|Maria Schmitz|Kölner Straße 45|50123 Köln  |43   ");
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             var result = service.Convert(source);
 
@@ -104,7 +104,7 @@ namespace CSVTabellierungTester
             expected.Add("|Peter Pan    |Am Hang 5       |12345 Einsam|42   ");
             expected.Add("|Maria Schmitz|Kölner Straße 45|50123 Köln  |43   ");
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung(IsFirstLineHeadline: false);
+            var service = new CSVTable.CSVTable(IsFirstLineHeadline: false);
 
             var result = service.Convert(source);
 
@@ -121,7 +121,7 @@ namespace CSVTabellierungTester
             source.Add("Markus Bittner;Hindenburgstrasse 3;79183 Waldkirch;35"); //13,16,10,2
             source.Add("Anastasia Bittner;Vogesenstrasse 5;xxxxx Weisweil;31"); //13,16,10,2
 
-            var service = new EnumerableTabellierung.EnumerableTabellierung();
+            var service = new CSVTable.CSVTable();
 
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
             UriBuilder uri = new UriBuilder(codeBase);
@@ -135,17 +135,17 @@ namespace CSVTabellierungTester
         [Fact]
         public void TestPrintTable()
         {
-            var test = new EnumerableTabellierung.EnumerableTabellierung();
+            var test = new CSVTable.CSVTable();
 
             test.SetHeadline("Name;Strasse;Ort;Alter");
             test.Add("Peter Pan;Am Hang 5;12345 Einsam;42");          //9 , 9,12,2
             test.Add("Maria Schmitz;Kölner Straße 45;50123 Köln;43"); //13,16,10,2
-            test.Add("Markus Bittner;Hindenburgstrasse 3;79183 Waldkirch;35"); //13,16,10,2
-            test.Add("Anastasia Bittner;Vogesenstrasse 5;xxxxx Weisweil;31"); //13,16,10,2
+            test.Add("Markus B;Merkurstrasse 3;xxxxx Buxtehude;35"); //13,16,10,2
+            test.Add("Anastasia B;Regenbogenallee 5;xxxxx Buxtehude;31"); //13,16,10,2
 
             test.PrintTable();
 
-            test.Add("Jonas Bittner; Vogesenstrasse 5; xxxxx Weisweil; 2,5");
+            test.Add("Jonas B; Regenbogenallee 5; xxxxx Buxtehude; 2,5");
 
             test.PrintTable();
         }

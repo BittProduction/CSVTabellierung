@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace EnumerableTabellierung
+namespace CSVTable
 {
-    public class EnumerableTabellierung
+    public class CSVTable
     {
         private Char CSVSeperator { get; set; }
         private bool IsFirstLineHeadline { get; set; }
@@ -13,7 +13,7 @@ namespace EnumerableTabellierung
         private List<string> Data { get; set; } = new List<string>();
         private string Headline { get; set; } = string.Empty;
 
-        public EnumerableTabellierung(Char Seperator = ';', bool IsFirstLineHeadline = true)
+        public CSVTable(Char Seperator = ';', bool IsFirstLineHeadline = true)
         {
             this.CSVSeperator = Seperator;
             this.IsFirstLineHeadline = IsFirstLineHeadline;

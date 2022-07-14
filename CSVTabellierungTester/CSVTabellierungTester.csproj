@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSVTabellierung\EnumerableTabellierung.csproj" />
+    <ProjectReference Include="..\CSVTabellierung\CSVTable.csproj" />
   </ItemGroup>
 
 </Project>

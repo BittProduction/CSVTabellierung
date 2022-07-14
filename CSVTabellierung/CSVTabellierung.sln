@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32611.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableTabellierung", "EnumerableTabellierung.csproj", "{B8458C5E-BE79-4C31-BBF9-6FB7EC1FC786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSVTable", "CSVTable.csproj", "{B8458C5E-BE79-4C31-BBF9-6FB7EC1FC786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVTabellierungTester", "..\CSVTabellierungTester\CSVTabellierungTester.csproj", "{35DB3DDA-0DFD-4D1E-A80A-DD6B8756803E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSVTabellierungTester", "..\CSVTabellierungTester\CSVTabellierungTester.csproj", "{35DB3DDA-0DFD-4D1E-A80A-DD6B8756803E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
