@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,10 +15,24 @@ namespace CSVTable
         private List<string> Data { get; set; } = new List<string>();
         private string Headline { get; set; } = string.Empty;
 
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         public CSVTable(Char Seperator = ';', bool IsFirstLineHeadline = true)
         {
             this.CSVSeperator = Seperator;
             this.IsFirstLineHeadline = IsFirstLineHeadline;
+
+            var config = new NLog.Config.LoggingConfiguration();
+
+            // Targets where to log to: File and Console
+            //var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "file.txt" };
+            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+
+            // Rules for mapping loggers to targets            
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logconsole);
+
+            // Apply config           
+            NLog.LogManager.Configuration = config;
         }
 
         public void SetHeadline(string Headline)
@@ -38,15 +54,25 @@ namespace CSVTable
         {
             if(Data.Count > 1)
             {
-                Console.WriteLine($"" +
+                //Console.WriteLine($"" +
+                //    $"----------------" +
+                //    $"\n{DateTime.Now}\n" +
+                //    $"\n" +
+                //    $"{string.Join("\n", Convert(Data))}" +
+                //    $"\n\n" +
+                //    $"----------------");
+
+                Logger.Info($"" +
                     $"----------------" +
                     $"\n{DateTime.Now}\n" +
                     $"\n" +
-                    $"{string.Join("\n",Convert(Data))}" +
+                    $"{string.Join("\n", Convert(Data))}" +
                     $"\n\n" +
                     $"----------------");
+
             }
 
+            NLog.LogManager.Shutdown();
             ResetContent();
         }
 

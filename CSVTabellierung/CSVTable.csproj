@@ -21,4 +21,9 @@
 		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath="" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="NLog" Version="5.0.1" />
+	  <PackageReference Include="NLog.Extensions.Logging" Version="5.0.1" />
+	</ItemGroup>
+
 </Project>
